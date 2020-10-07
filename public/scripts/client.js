@@ -3,56 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready(function () {
 
-  $("#submitTweet").submit(function (event) {
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      url: "/tweets/",
-      data: $(this).serialize(),
-      success: function (result) {
-        alert("Post Submitted");
-      }
-    });
-  })
-})
-
-$(document).ready(function() {
-  const renderTweets = function(array) {
-    for(let tweet of array) {
-      createTweetElement(tweet);
-    }
-  }
-  const createTweetElement = function(tweet) {
-
-    let tweetObj = `<article class ="tweetheader">
-      <footer>
-
-      <img class="picture" scr="${tweetData.user.avatars}">
-      <div>
-      ${tweetData.content.user.name}
-      </div>
-      <div class="user">${tweetData.user.handle}</div>
-
-      </footer>  
-      <div class="post">${tweetData.content.text}</div>
-      <div class="days">${tweetData.created_at}</div>
-
-      </article>
-      `;
-      $('#tweets-container').append(tweetObj);
-      
-  };
-      renderTweets(data);
-});
-  // Test / driver code (temporary)
-//console.log($tweet); // to see what it looks like
-// 
-//})
-
-
-//const $tweet = createTweetElement(tweetData);
 const data = [
   {
     "user": {
@@ -78,3 +29,64 @@ const data = [
   }
 ]
 
+$(document).ready(function () {
+
+  console.log("is this working");
+  $("#submitTweet").submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: "/tweets/",
+      data: $(this).serialize(),
+      success: function () {
+        alert("Post Submitted");
+        console.log("Did this work?")
+      }
+    });
+    loadTweets();
+  });
+
+    const loadTweets = function() {
+      $.ajax({
+        method: "GET",
+        url: "/tweets/",
+        success: (responseJSON) => {
+          renderTweets(responseJSON);
+      }
+    });
+};
+
+  const renderTweets = function(array) {
+    for(let tweet of array) {
+      createTweetElement(tweet);
+    }
+  };
+  const createTweetElement = function(tweet) {
+
+    let tweetObj = `<article class ="tweetheader">
+      <footer>
+
+      <img class="picture" scr="${tweet.user.avatars}">
+      <div>
+      ${tweet.user.name}
+      </div>
+      <div class="user">${tweet.user.handle}</div>
+
+      </footer>  
+      <div class="post">${tweet.content.text}</div>
+      <div class="days">${tweet.created_at}</div>
+
+      </article>
+      `;
+      $('#tweets-container').append(tweetObj);
+      
+  };
+      //renderTweets(data);
+});
+  // Test / driver code (temporary)
+//console.log($tweet); // to see what it looks like
+// 
+//})
+
+
+//const $tweet = createTweetElement(tweetData);
