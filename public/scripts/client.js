@@ -3,7 +3,20 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+$(document).ready(function () {
 
+  $("#submitTweet").submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: "/tweets/",
+      data: $(this).serialize(),
+      success: function (result) {
+        alert("Post Submitted");
+      }
+    });
+  })
+})
 
 $(document).ready(function() {
   const renderTweets = function(array) {
@@ -28,7 +41,7 @@ $(document).ready(function() {
 
       </article>
       `;
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').append(tweetObj);
       
   };
       renderTweets(data);
