@@ -1,0 +1,34 @@
+.new-tweet {
+  margin: auto;
+  width: 80%;
+}
+
+.new-tweet h2 {
+  margin-left: 45%;
+}
+
+.new-tweet textarea {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid black;
+  display: block;
+  width: 100%;
+  font-family: source-sans-pro;
+  font-size: 20px;
+}
+
+main section span {
+  display: inline-block;
+  margin-left: 100%;
+  font-family: bungee;
+}
+
+main section input {
+  background-color: blue;
+    font-family: bungee;
+    color: white;
+    padding: 6px;
+    border-radius: 0px;
+    margin-top: 1%
+}

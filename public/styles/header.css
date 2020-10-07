@@ -1,0 +1,21 @@
+header {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-color: #f0ab22;
+  background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
+}
+
+.image {
+  margin-top: 20px;
+  position: center;
+  margin-left: 45%;
+}
+
+.name {
+  align-items: center;
+  margin-left: 45%;
+  color: white;
+  font-size: 35px
+
+}

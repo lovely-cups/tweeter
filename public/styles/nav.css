@@ -1,0 +1,28 @@
+nav {
+  background-color: #4056A1;
+  height: 120px;
+  position: relative;
+  width: 100%;
+  top: 0;
+  color: #FFFF;
+  font-family: "bungee";
+  font-size: 50px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: .7em;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar h1 {
+  font-family: bungee;
+}
+
+.button {
+  margin-right: auto;
+  margin-top: 10%;
+  font-family: bungee;
+}
