@@ -1,28 +1,42 @@
 nav {
   background-color: #4056A1;
   height: 120px;
-  position: relative;
+  position: stretch;
   width: 100%;
   top: 0;
   color: #FFFF;
   font-family: "bungee";
-  font-size: 50px;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  padding-top: .7em;
 }
 
 .nav-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
-.nav-bar h1 {
-  font-family: bungee;
-}
-
-.button {
+.tweeter{
   margin-right: auto;
-  margin-top: 10%;
-  font-family: bungee;
+  position: relative;
+  top: .8em;
+  left: 1.5em;
+  right: 1.5em;
+  bottom: 2em;
+  font-size: 45px
 }
+
+.write-tweet {
+  margin-left: auto;
+  position: relative;
+  top: .1em;
+  left: 32em;
+  right: 1.5em;
+  bottom: 1.8em;
+  color: #FFFF;
+  font-family: "bungee";
+  text-align: center;
+  font-size: 20px;
+}
+
+/*.write-tweet {
+
+}
+*/
