@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
+/*const data = [
   {
     "user": {
       "name": "Newton",
@@ -28,10 +28,18 @@ const data = [
     "created_at": 1461113959088
   }
 ]
+*/
+//toggle for new tweet button on nav
+$(document).ready(function () {
+  $('.button').click(function () {
+    $('.new-tweet').toggle(400);
+  });
+}); 
+
+
 
 $(document).ready(function () {
-
-  console.log("is this working");
+  //console.log("is this working");
   $("#submitTweet").submit(function (event) {
     event.preventDefault();
     $.ajax({
@@ -39,14 +47,15 @@ $(document).ready(function () {
       url: "/tweets/",
       data: $(this).serialize(),
       success: function () {
-        alert("Post Submitted");
-        console.log("Did this work?")
+        loadTweets();
+        //post request for new tweet on event page
       }
     });
-    loadTweets();
+    
   });
-
+//load tweets while not refrteshing page get request
     const loadTweets = function() {
+      $('#tweets-container').empty();
       $.ajax({
         method: "GET",
         url: "/tweets/",
@@ -55,25 +64,31 @@ $(document).ready(function () {
       }
     });
 };
-
+//function to loop through tweets
   const renderTweets = function(array) {
     for(let tweet of array) {
       createTweetElement(tweet);
     }
   };
   const createTweetElement = function(tweet) {
-
+    const escape =  function(str) {
+      let div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    } 
+    //create new tweet body for post
+    const safeHTML = `<p>${escape(tweet.content.text)}</p>`
     let tweetObj = `<article class ="tweetheader">
       <footer>
 
-      <img class="picture" scr="${tweet.user.avatars}">
+      <img class="picture" src="${tweet.user.avatars}">
       <div>
       ${tweet.user.name}
       </div>
       <div class="user">${tweet.user.handle}</div>
 
       </footer>  
-      <div class="post">${tweet.content.text}</div>
+      <div class="post">${safeHTML}</div>
       <div class="days">${tweet.created_at}</div>
 
       </article>
@@ -81,6 +96,7 @@ $(document).ready(function () {
       $('#tweets-container').append(tweetObj);
       
   };
+  loadTweets();
       //renderTweets(data);
 });
   // Test / driver code (temporary)
