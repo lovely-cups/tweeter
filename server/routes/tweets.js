@@ -41,6 +41,11 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  //added tweetRoute for post request
+  
+  tweetsRoutes.post("/tweets", (req, res) => {
+  });
   return tweetsRoutes;
 
 }
+
