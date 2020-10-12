@@ -17,6 +17,9 @@
   font-family: source-sans-pro;
   font-size: 20px;
 }
+.negative {
+  color: red;
+}
 
 main section span {
   display: inline-block;
@@ -25,10 +28,19 @@ main section span {
 }
 
 main section input {
-  background-color: blue;
+    background-color: #4056A1;
     font-family: bungee;
     color: white;
     padding: 6px;
     border-radius: 0px;
+    border-style: double;
     margin-top: 1%
 }
+
+@media only screen and (min-width: 1024px) {
+  .new-tweet {
+    margin-top: 8em;
+    float: right;
+    width: 60%;
+    display: inline-block;
+  }

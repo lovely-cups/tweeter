@@ -6,16 +6,36 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
 }
 
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .image {
   margin-top: 20px;
-  position: center;
-  margin-left: 45%;
+  align-items: center;
+  
 }
 
 .name {
-  align-items: center;
-  margin-left: 45%;
+  justify-content: center;
+  display: flex;
   color: white;
   font-size: 35px
 
+}
+
+@media only screen and (min-width: 1024px) {
+  header {
+    float: left;
+    margin-left: 2em;
+    margin-top: 10em;
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    height: 400px;
+    background-color: #f0ab22;
+    background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
+  }
 }

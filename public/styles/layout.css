@@ -33,3 +33,22 @@ body {
  .container h4 {
    margin-left: 46%;
  }
+
+ .error {
+   display: none;
+   border-style: solid;
+   color: red;
+   border: black;
+   text-align: center;
+ }
+
+ @media only screen and (min-width: 1024px) {
+   .container {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: auto;
+    width: 90%;
+    font-size: 20px;
+    position: absolute;
+
+   }
+ }
