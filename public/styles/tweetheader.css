@@ -1,8 +1,9 @@
 
 
 .tweetheader {
-  margin-top: 3%;
+  margin-top: 6.5em;
   border: solid;
+  
 }
 
 .tweetheader:hover {
@@ -55,6 +56,14 @@ footer {
   margin-left: 25px;
   margin-top: 50px;
   margin-bottom: auto;
+}
+
+.symbols {
+  color: red;
+  font-size: 1em;
+  float: right;
+  margin-right: .5em;
+  margin-bottom: .5em;
 }
 
 

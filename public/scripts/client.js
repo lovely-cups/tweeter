@@ -30,6 +30,17 @@
 ]
 */
 //toggle for new tweet button on nav
+
+const howManyDays = (createdDate) => {
+  const dateNow = Date.now();
+  let hoursAgo = (dateNow - createdDate) / 1000 / 60 / 60;
+  if (hoursAgo < 24) {
+    return `tweeted ${Math.floor(hoursAgo)} hours ago`;
+  } else {
+    return `tweeted ${Math.floor(hoursAgo / 24)} days ago`;
+  }
+};
+
 $(document).ready(function () {
   $('.button').click(function () {
     $('.new-tweet').toggle(400);
@@ -38,21 +49,35 @@ $(document).ready(function () {
 
 
 
+
+
 $(document).ready(function () {
   //console.log("is this working");
   $("#submitTweet").submit(function (event) {
     event.preventDefault();
-    $.ajax({
-      method: "POST",
-      url: "/tweets/",
-      data: $(this).serialize(),
-      success: function () {
-        loadTweets();
-        //post request for new tweet on event page
-      }
-    });
+    let text = document.getElementById("test")
+    let count = $(text).val().length;
+    if(count > 140) {
+      $("#over").slideToggle(1000);
+    } else if (count <= 0) {
+      $("#empty").slideDown("fast");
+    } else {
+      $.post('/tweets', $(this).serialize()).then(
+        function() {
+          $.ajax('/tweets', { method: 'GET' })
+            .then(function() {
+              $('#test').val('');
+              $('.counter').html(140);
+              $('.tweet-container').empty();
+              loadTweets();
+            });
+        });
     
-  });
+  }
+    
+    
+        //post request for new tweet on event page
+    });
 //load tweets while not refrteshing page get request
     const loadTweets = function() {
       $('#tweets-container').empty();
@@ -60,7 +85,7 @@ $(document).ready(function () {
         method: "GET",
         url: "/tweets/",
         success: (responseJSON) => {
-          renderTweets(responseJSON);
+          renderTweets(responseJSON.reverse());
       }
     });
 };
@@ -89,7 +114,8 @@ $(document).ready(function () {
 
       </footer>  
       <div class="post">${safeHTML}</div>
-      <div class="days">${tweet.created_at}</div>
+      <div class="days">${howManyDays(tweet.created_at)}</div>
+      <div class="symbols">&#9873 &#10227; &#10084;</div>
 
       </article>
       `;

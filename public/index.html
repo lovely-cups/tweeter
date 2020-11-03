@@ -52,14 +52,17 @@
     <main class="container">
     
     
-    <div class="error" hidden>Post too long. Please simplify your thoughts</div>
+    <div class="error">
+      <p id="empty">No chirping, means no Tweets</p>
+      <p id="over">Sorry, this is too long. Please refine your chirps</p>
+    </div>
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
       <form id="submitTweet" action="/tweets/" method="POST">
         <textarea id="test" name="text" placeholder="what are you humming about?"></textarea>
         <div>
           <input type="submit" value="Tweet">
-          <span id="counter" class="counter">140</span>
+          <span id="counter" class="counter" for="text">140</span>
         </div>
       </form>
     </section>

@@ -34,13 +34,27 @@ body {
    margin-left: 46%;
  }
 
- .error {
+ .error #empty{
    display: none;
    border-style: solid;
    color: red;
    border: black;
    text-align: center;
+   margin-top: 10em;
+   margin-left: 30em;
  }
+
+ .error #over {
+  display: none;
+  border-style: solid;
+  color: red;
+  border: black;
+  text-align: center;
+  margin-top: 10em;
+  margin-left: 30em;
+ }
+
+
 
  @media only screen and (min-width: 1024px) {
    .container {

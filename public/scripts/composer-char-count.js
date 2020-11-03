@@ -1,24 +1,32 @@
 
 //Jquery function for tweeter character count
 $(document).ready(function() {
-let count = document.getElementById("counter")
+let countElement = document.getElementById("counter")
 let text = document.getElementById("test")
 text.onkeyup = function () {
   //increment counter
-  count.innerHTML--;
+  let count = $(text).val().length;
+  countElement.innerHTML = 140 - count;
+  console.log($(text).val().length);
 
   //change font if more than total character count
-if(count.innerHTML < 0){
+if(countElement.innerHTML < 0){
     $('.counter').addClass('negative')
-} else if(count.innerHTML > 0){
+} else if(countElement.innerHTML > 0){
   $('.counter').removeClass('negative')
 }
 //error shown if too many characters
-if(count.innerHTML < 0){
-  $(".error").slideToggle(1000);
+/*if(countElement.innerHTML < 0){
+  $(".over").slideToggle(1000);
 }
-if(count.innerHTML < 0){
+if(countElement.innerHTML === ''){
+  $(".empty").slideDown("fast");
+}
+if(countElement.innerHTML < 0){
   $("#submitTweet input").prop("disabled", false);
 }
 }
+*/
+}
 });
+
